@@ -1,0 +1,42 @@
+<div class="message" *ngIf="isDisabledConvert">
+  <p>You need to wait a little while the latest data is loaded!</p>
+</div>
+<div *ngIf="!isDisabledConvert">
+  <app-actual-currencies [actualCurrenciesArray]="actualCurrencies"></app-actual-currencies>
+</div>
+
+<div class="converter-conteiner">
+  <div class="converter">
+    <select class="currency-select" 
+            [disabled]="isDisabledConvert" 
+            #firstCurrency [(ngModel)]="selectedFirstCurrency"
+            (change)="onFirstSelectChange($event, firstCurrency.value)">
+      <option *ngFor="let curr of availableCurrenciesArr" [value]="curr.value">{{ curr.name }}</option>
+    </select>
+    <input class="number-input" 
+            type="number" 
+            [disabled]="isDisabledConvert" 
+            [(ngModel)]="firstNumber"
+            (ngModelChange)="onFirstNumberChange($event)" 
+            min="0" step="1" value="1">
+  </div>
+  <div><img src="../../assets/reverse.png" 
+            class="reverse-img" 
+            (click)="reverseCurrencies()" 
+            alt="-"></div>
+  <div class="converter">
+    <select class="currency-select" 
+            [disabled]="isDisabledConvert" 
+            #secondCurrency 
+            [(ngModel)]="selectedSecondCurrency"
+            (change)="onSecondSelectChange($event, secondCurrency.value)">
+      <option *ngFor="let curr of availableCurrenciesArr" [value]="curr.value">{{ curr.name }}</option>
+    </select>
+    <input class="number-input" 
+            type="number" 
+            [disabled]="isDisabledConvert" 
+            [(ngModel)]="secondNumber"
+            (ngModelChange)="onSecondNumberChange($event)" 
+            min="0" step="1" value="1">
+  </div>
+</div>

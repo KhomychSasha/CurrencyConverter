@@ -1,0 +1,17 @@
+<div class="conteiner">
+    <nav class="menu">
+      <div class="title">Currency converter</div>
+  
+      <div class="nav-buttons">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a [routerLink]="['/']">Converter</a>
+        </li>
+  
+        <li routerLinkActive="active">
+          <a [routerLink]="['/aboutme']">About me</a>
+        </li>
+      </div>
+    </nav>
+    <router-outlet></router-outlet>
+  </div>
+  
